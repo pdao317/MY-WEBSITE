@@ -73,16 +73,38 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  background-color: var(--clr-bg);
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--clr-bg);
+  background-color: transparent;
   color: var(--clr-text);
   line-height: 1.7;
   font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* ── Honeycomb backdrop: subtle red fluorescent hex grid ── */
+.bg-honeycomb {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='28' height='49' viewBox='0 0 28 49' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z' fill='%23ff2d24' fill-rule='evenodd'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 15% 18%, rgba(232,38,31,0.08), transparent 55%),
+    radial-gradient(ellipse at 85% 78%, rgba(255,77,71,0.07), transparent 55%);
+  background-size: 52px 91px, 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 4px rgba(255,45,36,0.4));
+  animation: honeyPulse 7s ease-in-out infinite alternate;
+}
+@keyframes honeyPulse {
+  from { opacity: 0.32; }
+  to   { opacity: 0.55; }
 }
 
 img { display: block; max-width: 100%; }
@@ -115,7 +137,7 @@ h1, h2, h3 {
 
 .section { padding-block: var(--space-xl); }
 
-.section-alt { background-color: var(--clr-bg-alt); }
+.section-alt { background-color: rgba(19, 19, 22, 0.82); }
 
 .section-label {
   display: inline-block;
